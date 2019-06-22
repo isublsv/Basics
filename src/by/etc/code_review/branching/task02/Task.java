@@ -1,10 +1,10 @@
-package by.etc.code_review.line_programs.task01;
+package by.etc.code_review.branching.task02;
 
 import java.util.Locale;
 import java.util.Scanner;
 
 /**
- * 1. Найдите значение функции: z = ((a - 3) * b / 2) + c.
+ * 2. Найти max{min(a, b), min(c, d)}
  */
 public class Task {
 
@@ -13,13 +13,17 @@ public class Task {
 	public static void main(String[] args) {
 
 		try {
-			System.out.println("Please, enter a, b, c:");
+			System.out.println("Please, enter a, b, c, d:");
 
 			double a = getValue();
 			double b = getValue();
 			double c = getValue();
+			double d = getValue();
 
-			System.out.println("z = " + calculateNumber(a, b, c));
+			double min1 = getMinNumber(a, b);
+			double min2 = getMinNumber(c, d);
+
+			System.out.println(getMaxNumber(min1, min2));
 		} finally {
 			if (scanner != null) {
 				scanner.close();
@@ -27,8 +31,12 @@ public class Task {
 		}
 	}
 
-	private static double calculateNumber(double a, double b, double c) {
-		return ((a - 3) * b / 2) + c;
+	private static double getMaxNumber(double a, double b) {
+		return a > b ? a : b;
+	}
+
+	private static double getMinNumber(double a, double b) {
+		return a < b ? a : b;
 	}
 
 	private static double getValue() {
