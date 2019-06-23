@@ -35,7 +35,8 @@ public class Task {
 	}
 
 	private static boolean arePointsOnSameLine(double x1, double y1, double x2, double y2, double x3, double y3) {
-		return ((x3 - x1) / (x2 - x1) == (y3 - y1) / (y2 - y1));
+		double acc = 1e-20;     //calculation accuracy
+		return Math.pow(((x3 - x1) / (x2 - x1) - (y3 - y1) / (y2 - y1)), 2) <= acc;
 	}
 
 	private static double getValue() {
