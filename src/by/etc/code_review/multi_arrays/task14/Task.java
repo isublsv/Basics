@@ -13,13 +13,10 @@ public class Task {
 	public static void main(String[] args) {
 
 		try {
-			System.out.println("Please, enter matrix dimension N:");
+			System.out.println("Please, enter matrix dimension N (M must be equal to N):");
 			int n = checkMatrixDimensions();
 
-			System.out.println("Please, enter matrix dimension M:");
-			int m = checkMatrixDimensions();
-
-			long[][] matrix = fillMatrix(n, m);
+			long[][] matrix = fillMatrix(n);
 			printMatrix(matrix);
 
 		} finally {
@@ -29,9 +26,9 @@ public class Task {
 		}
 	}
 
-	private static long[][] fillMatrix(int n, int m) {
+	private static long[][] fillMatrix(int n) {
 
-		long[][] matrix = new long[n][m];
+		long[][] matrix = new long[n][n];
 
 		for (int i = 0; i < matrix.length; i++) {
 			for (int j = 0; j < matrix[i].length; j++) {
