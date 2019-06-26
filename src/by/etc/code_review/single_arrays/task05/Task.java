@@ -14,17 +14,26 @@ public class Task {
 
 		try {
 			System.out.println("Please, enter array dimension N:");
-
 			int n = checkValue();
 
 			long[] array = fillArray(n);
+			printArray(array);
 
 			System.out.println("Number which are а[i] > i: ");
-
 			printNumbers(array);
 		} finally {
 			if (scanner != null) {
 				scanner.close();
+			}
+		}
+	}
+
+
+	private static void printNumbers(long[] a) {
+
+		for (int i = 0; i < a.length; i++) {
+			if (a[i] > i) {
+				System.out.format("a[i]=%d \ti=%d\n", a[i], i);
 			}
 		}
 	}
@@ -35,22 +44,20 @@ public class Task {
 		Random r = new Random();
 
 		for (int i = 0; i < array.length; i++) {
-			array[i] = r.nextLong();
-			System.out.print(array[i] + " ");
+			array[i] = r.nextLong() / 100000000000000000L;
 		}
 
-		System.out.println();
 		return array;
 	}
 
-	private static void printNumbers(long[] a) {
+	private static void printArray(long[] array) {     //for debug
 
-		for (int i = 0; i < a.length; i++) {
-			if (a[i] > i) {
-				System.out.format("a[i]=%d \ti=%d\n", a[i], i);
-			}
+		for (long value : array) {
+			System.out.print(value + " ");
 		}
+		System.out.println();
 	}
+
 
 	private static int getValue() {
 

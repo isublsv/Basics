@@ -15,13 +15,12 @@ public class Task {
 
 		try {
 			System.out.println("Please, enter array dimension N:");
-
 			int n = checkValue();
 
 			long[] array = fillArray(n);
+			printArray(array);
 
 			System.out.print("Min element with max frequency = ");
-
 			System.out.println(getMaxFrequencyMinElement(array));
 		} finally {
 			if (scanner != null) {
@@ -29,21 +28,6 @@ public class Task {
 			}
 		}
 	}
-
-	private static long[] fillArray(int n) {
-
-		long[] array = new long[n];
-		Random r = new Random();
-
-		for (int i = 0; i < array.length; i++) {
-			array[i] = r.nextLong() / 100000000000000000L; // (for debug);
-			System.out.print(array[i] + " ");
-		}
-
-		System.out.println();
-		return array;
-	}
-
 
 	private static long getMaxFrequencyMinElement(long[] array) {
 		int[] freq = new int[array.length];     //array contains frequency of each element of the given array
@@ -72,6 +56,26 @@ public class Task {
 
 		return minElement;
 	}
+
+	private static long[] fillArray(int n) {
+
+		long[] array = new long[n];
+		Random r = new Random();
+
+		for (int i = 0; i < array.length; i++) {
+			array[i] = r.nextLong() / 100000000000000000L; // (for debug);
+		}
+
+		return array;
+	}
+
+	private static void printArray(long[] array){
+		for (long value : array) {
+			System.out.print(value + " ");
+		}
+		System.out.println();
+	}
+
 
 	private static int getValue() {
 

@@ -16,10 +16,10 @@ public class Task {
 
 		try {
 			System.out.println("Please, enter array dimension N:");
-
 			int n = checkValue();
 
 			double[] array = fillArray(n);
+			printArray(array);
 
 			int[] counters = getCounterValues(array);
 
@@ -39,10 +39,10 @@ public class Task {
 		int zeroCounter = 0;
 		int negativeCounter = 0;
 
-		for (int i = 0; i < array.length; i++) {
-			if (array[i] > 0) {
+		for (double value : array) {
+			if (value > 0) {
 				positiveCounter++;
-			} else if (array[i] == 0) {
+			} else if (value == 0) {
 				zeroCounter++;
 			} else {
 				negativeCounter++;
@@ -59,12 +59,17 @@ public class Task {
 
 		for (int i = 0; i < array.length; i++) {
 			array[i] = r.nextDouble() * 200 - 100;        //random double [-100...100]
-			System.out.print(array[i] + " ");
 		}
 
-		System.out.println();
-
 		return array;
+	}
+
+	private static void printArray(double[] array) {     //for debug
+
+		for (double value : array) {
+			System.out.print(value + " ");
+		}
+		System.out.println();
 	}
 
 	private static double getValue() {

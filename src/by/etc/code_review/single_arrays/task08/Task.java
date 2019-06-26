@@ -15,13 +15,12 @@ public class Task {
 
 		try {
 			System.out.println("Please, enter array dimension N:");
-
 			int n = checkValue();
 
 			long[] array = fillArray(n);
+			printArray(array);
 
 			System.out.println("New array without min element: ");
-
 			long[] resultArray = getNewArrayWithoutMinElement(array);
 
 			//long[] arr = {-5, -5, 0, 10, 22, -5};
@@ -36,31 +35,16 @@ public class Task {
 		}
 	}
 
-	private static long[] fillArray(int n) {
-
-		long[] array = new long[n];
-		Random r = new Random();
-
-		for (int i = 0; i < array.length; i++) {
-			array[i] = r.nextLong() / 100000000000000000L; // (for debug);
-			System.out.print(array[i] + " ");
-		}
-
-		System.out.println();
-		return array;
-	}
-
-
 	private static long[] getNewArrayWithoutMinElement(long[] array) {
 
 		long minValue = array[0];       //min element
 		int counter = 0;        //number of min elements
 
-		for (int i = 0; i < array.length; i++) {
-			if (minValue > array[i]) {
-				minValue = array[i];
+		for (long value : array) {
+			if (minValue > value) {
+				minValue = value;
 				counter = 1;
-			} else if (minValue == array[i]) {
+			} else if (minValue == value) {
 				counter++;
 			}
 		}
@@ -69,9 +53,9 @@ public class Task {
 
 		int j = 0;      //index for new array
 
-		for (int i = 0; i < array.length; i++) {
-			if (array[i] != minValue) {
-				newArray[j] = array[i];
+		for (long value : array) {
+			if (value != minValue) {
+				newArray[j] = value;
 				j++;
 			}
 		}
@@ -79,10 +63,23 @@ public class Task {
 		return newArray;
 	}
 
-	private static void printArray(long[] array){
-		for (long anArray : array) {
-			System.out.print(anArray + " ");
+	private static long[] fillArray(int n) {
+
+		long[] array = new long[n];
+		Random r = new Random();
+
+		for (int i = 0; i < array.length; i++) {
+			array[i] = r.nextLong() / 100000000000000000L; // (for debug);
 		}
+
+		return array;
+	}
+
+	private static void printArray(long[] array){
+		for (long value : array) {
+			System.out.print(value + " ");
+		}
+		System.out.println();
 	}
 
 	private static int getValue() {

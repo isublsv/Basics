@@ -15,13 +15,12 @@ public class Task {
 
 		try {
 			System.out.println("Please, enter array dimension N:");
-
 			int n = checkValue();
 
 			double[] array = fillArray(n);
+			printArray(array);
 
 			findMinMaxElements(array);
-
 			printArray(array);
 		} finally {
 			if (scanner != null) {
@@ -62,18 +61,15 @@ public class Task {
 
 		for (int i = 0; i < array.length; i++) {
 			array[i] = r.nextDouble() * 200 - 100;        //random double [-100...100]
-			System.out.print(array[i] + " ");
 		}
-
-		System.out.println();
-
 		return array;
 	}
 
 	private static void printArray(double[] array){     //for debug
-		for (int i = 0; i < array.length; i++) {
-			System.out.print(array[i] + " ");
+		for (double value : array) {
+			System.out.print(value + " ");
 		}
+		System.out.println();
 	}
 
 	private static double getValue() {

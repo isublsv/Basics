@@ -14,10 +14,10 @@ public class Task {
 
 		try {
 			System.out.println("Please, enter array dimension N:");
-
 			int n = checkValue();
 
 			long[] array = fillArray(2 * n);
+			printArray(array);
 
 			System.out.println("Max sum of pairs of elements = " + getMaxSumOfPair(array));
 		} finally {
@@ -25,20 +25,6 @@ public class Task {
 				scanner.close();
 			}
 		}
-	}
-
-	private static long[] fillArray(int n) {
-
-		long[] array = new long[n];
-		Random r = new Random();
-
-		for (int i = 0; i < array.length; i++) {
-			array[i] = r.nextLong(); // / 10000000000000000L (for debug);
-			System.out.print(array[i] + " ");
-		}
-
-		System.out.println();
-		return array;
 	}
 
 	private static long getMaxSumOfPair(long[] array) {
@@ -56,6 +42,26 @@ public class Task {
 		}
 
 		return maxSum;
+	}
+
+	private static long[] fillArray(int n) {
+
+		long[] array = new long[n];
+		Random r = new Random();
+
+		for (int i = 0; i < array.length; i++) {
+			array[i] = r.nextLong() / 100000000000000000L; // (for debug);
+		}
+
+		return array;
+	}
+
+	private static void printArray(long[] array) {     //for debug
+
+		for (long value : array) {
+			System.out.print(value + " ");
+		}
+		System.out.println();
 	}
 
 	private static int getValue() {

@@ -14,13 +14,12 @@ public class Task {
 
 		try {
 			System.out.println("Please, enter array dimension N:");
-
 			int n = (int) checkValue();
 
 			long[] array = fillArray(n);
+			printArray(array);
 
 			System.out.println("Please, enter K value:");
-
 			long k = getValue();
 
 			System.out.println("Sum of numbers which are multiples of K: " + getSum(array, k));
@@ -31,31 +30,37 @@ public class Task {
 		}
 	}
 
+	private static long getSum(long[] a, long k) {
+
+		long sum = 0;
+
+		for (long value : a) {
+			if (value % k == 0) {
+				sum += value;
+			}
+		}
+
+		return sum;
+	}
+
 	private static long[] fillArray(int n) {
 
 		long[] array = new long[n];
 		Random r = new Random();
 
 		for (int i = 0; i < array.length; i++) {
-			array[i] = r.nextLong();
-			System.out.print(array[i] + " ");
+			array[i] = r.nextLong() / 100000000000000000L;
 		}
 
-		System.out.println();
 		return array;
 	}
 
-	private static long getSum(long[] a, long k) {
+	private static void printArray(long[] array) {     //for debug
 
-		long sum = 0;
-
-		for (int i = 0; i < a.length; i++) {
-			if (a[i] % k == 0) {
-				sum += a[i];
-			}
+		for (long value : array) {
+			System.out.print(value + " ");
 		}
-
-		return sum;
+		System.out.println();
 	}
 
 	private static long getValue() {

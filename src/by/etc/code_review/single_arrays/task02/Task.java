@@ -16,13 +16,12 @@ public class Task {
 
 		try {
 			System.out.println("Please, enter array dimension N:");
-
 			int n = checkValue();
 
 			double[] array = fillArray(n);
+			printArray(array);
 
 			System.out.println("Please, enter Z value (-100 ~ +100 for results):");
-
 			double z = getValue();
 
 			System.out.println("Count replacement: " + getReplaceCount(array, z));
@@ -57,12 +56,17 @@ public class Task {
 
 		for (int i = 0; i < array.length; i++) {
 			array[i] = r.nextDouble() * 200 - 100;        //random double [-100...100]
-			System.out.print(array[i] + " ");
 		}
 
-		System.out.println();
-
 		return array;
+	}
+
+	private static void printArray(double[] array) {     //for debug
+
+		for (double value : array) {
+			System.out.print(value + " ");
+		}
+		System.out.println();
 	}
 
 	private static double getValue() {
