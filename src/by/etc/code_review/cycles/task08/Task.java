@@ -32,6 +32,8 @@ public class Task {
 
 		int counter = 0;
 
+		a = Math.abs(a);
+
 		long tmp = a;
 
 		while (tmp > 0) {           //find array size
@@ -53,25 +55,32 @@ public class Task {
 
 		int digit = 0;
 
+		boolean gotCoincidence = false;
+
 		while (digit <= 9) {
 
 			boolean gotDigit = false;       //flag that signals us the digit exists in the first array
 
 			for (int i = 0; i < a.length; i++) {
-				if (a[i] == digit){
+				if (a[i] == digit) {
 					gotDigit = true;
 					break;
 				}
 			}
 
 			for (int j = 0; j < b.length; j++) {
-				if (b[j] == digit && gotDigit){
-					System.out.print(digit+ " ");
+				if (b[j] == digit && gotDigit) {
+					System.out.print(digit + " ");
+					gotCoincidence = true;
 					break;
 				}
 			}
 
 			digit++;
+		}
+
+		if (!gotCoincidence) {
+			System.out.println("There are no the same digits!");
 		}
 	}
 
