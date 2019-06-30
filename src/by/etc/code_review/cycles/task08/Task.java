@@ -17,7 +17,10 @@ public class Task {
 			long a = getValue();
 			long b = getValue();
 
-			getSameDigits(a, b);
+			long[] arrA = getArr(a);
+			long[] arrB = getArr(b);
+
+			getSameDigits(arrA, arrB);
 		} finally {
 			if (scanner != null) {
 				scanner.close();
@@ -25,21 +28,50 @@ public class Task {
 		}
 	}
 
-	private static void getSameDigits(long a, long b) {
+	private static long[] getArr(long a) {
 
-		String aString = String.valueOf(a);
-		String bString = String.valueOf(b);
+		int counter = 0;
 
-		for (int i = 0; i < aString.length(); i++) {
+		long tmp = a;
 
-			for (int j = 0; j < bString.length(); j++) {
+		while (tmp > 0) {           //find array size
+			tmp = tmp / 10;
+			counter++;
+		}
 
-				if (aString.charAt(i) == bString.charAt(j)){
+		long[] array = new long[counter];
 
-					System.out.print(aString.charAt(i) + " ");
+		for (int i = array.length - 1; i >= 0; i--) {       //fill the array
+			array[i] = a % 10;
+			a = a / 10;
+		}
 
+		return array;
+	}
+
+	private static void getSameDigits(long[] a, long[] b) {
+
+		int digit = 0;
+
+		while (digit <= 9) {
+
+			boolean gotDigit = false;       //flag that signals us the digit exists in the first array
+
+			for (int i = 0; i < a.length; i++) {
+				if (a[i] == digit){
+					gotDigit = true;
+					break;
 				}
 			}
+
+			for (int j = 0; j < b.length; j++) {
+				if (b[j] == digit && gotDigit){
+					System.out.print(digit+ " ");
+					break;
+				}
+			}
+
+			digit++;
 		}
 	}
 
