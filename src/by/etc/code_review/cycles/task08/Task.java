@@ -17,10 +17,7 @@ public class Task {
 			long a = getValue();
 			long b = getValue();
 
-			long[] arrA = getArr(a);
-			long[] arrB = getArr(b);
-
-			getSameDigits(arrA, arrB);
+			getSameDigits(a, b);
 		} finally {
 			if (scanner != null) {
 				scanner.close();
@@ -51,25 +48,28 @@ public class Task {
 		return array;
 	}
 
-	private static void getSameDigits(long[] a, long[] b) {
+	private static void getSameDigits(long a, long b) {
 
 		int digit = 0;
 
 		boolean gotCoincidence = false;
 
+		long[] arrA = getArr(a);
+		long[] arrB = getArr(b);
+
 		while (digit <= 9) {
 
 			boolean gotDigit = false;       //flag that signals us the digit exists in the first array
 
-			for (int i = 0; i < a.length; i++) {
-				if (a[i] == digit) {
+			for (int i = 0; i < arrA.length; i++) {
+				if (arrA[i] == digit) {
 					gotDigit = true;
 					break;
 				}
 			}
 
-			for (int j = 0; j < b.length; j++) {
-				if (b[j] == digit && gotDigit) {
+			for (int j = 0; j < arrB.length; j++) {
+				if (arrB[j] == digit && gotDigit) {
 					System.out.print(digit + " ");
 					gotCoincidence = true;
 					break;
