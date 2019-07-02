@@ -38,15 +38,15 @@ public class Task {
 		int i = 0;
 		int j = i + 1;
 		while (j < array.length) {
-			if (array[i] == 0){                 //if first element is 0
-				if (array[j] != 0){             //and if the next element is not 0
+			if (array[i] == 0) {                //if first element is 0
+				if (array[j] != 0) {            //and if the next element is not 0
 					array[i] = array[j];        //swap them
 					array[j] = 0;               //set the next element by 0
 					i++;                        //move first index
-				}else if (array[j] == 0){       //if the next element is 0
+				} else if (array[j] == 0) {     //if the next element is 0
 					j++;                        //move second index
 				}
-			}else {
+			} else {
 				i++;                            //move first index
 			}
 		}
@@ -89,8 +89,11 @@ public class Task {
 		while (true) {
 			value = getValue();
 
-			if (value > 1) break;
-			else System.out.println("The N must be greater than 1! Enter again: ");
+			if (value > 1) {
+				break;
+			} else {
+				System.out.println("The N must be greater than 1! Enter again: ");
+			}
 		}
 
 		return value;

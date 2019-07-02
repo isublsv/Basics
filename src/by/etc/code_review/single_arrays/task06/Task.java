@@ -35,7 +35,7 @@ public class Task {
 		double sum = 0;
 
 		for (int i = 2; i < array.length; i++) {
-			if (isPrime(i)){
+			if (isPrime(i)) {
 				sum += array[i];
 			}
 		}
@@ -45,7 +45,7 @@ public class Task {
 	private static boolean isPrime(int i) {
 
 		for (int j = 2; j < i; j++) {
-			if (i % j == 0){
+			if (i % j == 0) {
 				return false;
 			}
 		}
@@ -65,7 +65,7 @@ public class Task {
 		return array;
 	}
 
-	private static void printArray(double[] array){     //for debug
+	private static void printArray(double[] array) {     //for debug
 		for (double value : array) {
 			System.out.print(value + " ");
 		}
@@ -89,8 +89,11 @@ public class Task {
 		while (true) {
 			value = (int) getValue();
 
-			if (value > 0) break;
-			else System.out.println("The N must be greater than zero! Enter again: ");
+			if (value > 0) {
+				break;
+			} else {
+				System.out.println("The N must be greater than 0! Enter again: ");
+			}
 		}
 
 		return value;

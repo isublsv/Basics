@@ -44,7 +44,7 @@ public class Task {
 
 		for (int i = 0; i < matrix.length; i++) {
 			for (int j = 0; j < matrix[i].length; j++) {
-				if (matrix[i][j] > max){
+				if (matrix[i][j] > max) {
 					max = matrix[i][j];
 				}
 			}
@@ -56,7 +56,7 @@ public class Task {
 	private static void setAllOddElementsTo(long[][] matrix, long max) {
 		for (int i = 0; i < matrix.length; i++) {
 			for (int j = 0; j < matrix[i].length; j++) {
-				if (matrix[i][j] % 2 != 0){
+				if (matrix[i][j] % 2 != 0) {
 					matrix[i][j] = max;
 				}
 			}
@@ -104,8 +104,11 @@ public class Task {
 		while (true) {
 			value = getValue();
 
-			if (value > 0) break;
-			else System.out.println("The value must be >= 0! Enter again: ");
+			if (value > 0) {
+				break;
+			} else {
+				System.out.println("The value must be greater than 0! Enter again: ");
+			}
 		}
 
 		return value;

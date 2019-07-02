@@ -86,8 +86,11 @@ public class Task {
 		while (true) {
 			value = (int) getValue();
 
-			if (value > 0) break;
-			else System.out.println("The N must be greater than zero! Enter again: ");
+			if (value > 0) {
+				break;
+			} else {
+				System.out.println("The N must be greater than 0! Enter again: ");
+			}
 		}
 
 		return value;

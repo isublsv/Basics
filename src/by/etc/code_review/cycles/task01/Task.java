@@ -43,14 +43,17 @@ public class Task {
 		return scanner.nextLong();
 	}
 
-	private static long checkValue(){
+	private static long checkValue() {
 		long value;
 
 		while (true) {
 			value = getValue();
 
-			if (value > 0) break;
-			else System.out.println("The number must be greater than zero! Enter again: ");
+			if (value > 0) {
+				break;
+			} else {
+				System.out.println("The number must be greater than zero! Enter again: ");
+			}
 		}
 
 		return value;

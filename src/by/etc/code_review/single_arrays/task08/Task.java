@@ -75,7 +75,7 @@ public class Task {
 		return array;
 	}
 
-	private static void printArray(long[] array){
+	private static void printArray(long[] array) {
 		for (long value : array) {
 			System.out.print(value + " ");
 		}
@@ -99,8 +99,11 @@ public class Task {
 		while (true) {
 			value = getValue();
 
-			if (value > 0) break;
-			else System.out.println("The N must be greater than zero! Enter again: ");
+			if (value > 0) {
+				break;
+			} else {
+				System.out.println("The N must be greater than 0! Enter again: ");
+			}
 		}
 
 		return value;

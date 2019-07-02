@@ -34,7 +34,7 @@ public class Task {
 	private static void printColumns(long[][] matrix) {
 
 		for (int i = 0; i < matrix.length; i++) {
-			for (int j = 1; j < matrix[i].length; j+=2) {            //only odd columns
+			for (int j = 1; j < matrix[i].length; j += 2) {            //only odd columns
 
 				long firstElement = matrix[0][j];
 				long lastElement = matrix[matrix.length - 1][j];
@@ -90,8 +90,11 @@ public class Task {
 		while (true) {
 			value = getValue();
 
-			if (value > 0) break;
-			else System.out.println("The value must be greater than 1! Enter again: ");
+			if (value > 0) {
+				break;
+			} else {
+				System.out.println("The value must be greater than 1! Enter again: ");
+			}
 		}
 
 		return value;

@@ -3,7 +3,8 @@ package by.etc.code_review.cycles.task05;
 import java.util.Locale;
 import java.util.Scanner;
 
-import static java.lang.Math.*;
+import static java.lang.Math.abs;
+import static java.lang.Math.pow;
 
 /**
  * 5. Даны числовой ряд и некоторое число е. Найти сумму тех членов ряда, модуль которых больше или равен заданному е.
@@ -62,8 +63,11 @@ public class Task {
 		while (true) {
 			value = getValue();
 
-			if (value > 0) break;
-			else System.out.println("The n must be greater than zero! Enter again: ");
+			if (value > 0) {
+				break;
+			} else {
+				System.out.println("The n must be greater than zero! Enter again: ");
+			}
 		}
 
 		return value;

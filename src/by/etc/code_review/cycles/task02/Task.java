@@ -44,7 +44,7 @@ public class Task {
 			} else {
 				printValues(a, b, step, -x);
 			}
-		}else {
+		} else {
 			if (x > 2 || x == 0) {
 				printValues(b, a, step, x);
 			} else {
@@ -67,14 +67,17 @@ public class Task {
 		return scanner.nextDouble();
 	}
 
-	private static double checkValue(){
+	private static double checkValue() {
 		double value;
 
 		while (true) {
 			value = getValue();
 
-			if (value > 0) break;
-			else System.out.println("The step must be greater than zero! Enter again: ");
+			if (value > 0) {
+				break;
+			} else {
+				System.out.println("The step must be greater than zero! Enter again: ");
+			}
 		}
 
 		return value;

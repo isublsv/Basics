@@ -89,15 +89,16 @@ public class Task {
 		return scanner.nextInt();
 	}
 
-	private static int checkIndex(int n){
+	private static int checkIndex(int n) {
 
 		int value;
 
 		while (true) {
 			value = getValue();
 
-			if (value >= 0 && value < n) break;
-			else System.out.println("Wrong index! Enter again: ");
+			if (value >= 0 && value < n) {
+				break;
+			} else System.out.println("Wrong index! Enter again: ");
 		}
 
 		return value;
@@ -110,8 +111,11 @@ public class Task {
 		while (true) {
 			value = getValue();
 
-			if (value > 0) break;
-			else System.out.println("The value must be >= 0! Enter again: ");
+			if (value > 0) {
+				break;
+			} else {
+				System.out.println("The value must be >= 0! Enter again: ");
+			}
 		}
 
 		return value;

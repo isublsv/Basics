@@ -35,10 +35,10 @@ public class Task {
 
 		for (int i = 0; i < matrix.length; i++) {
 			for (int j = 0; j < matrix[i].length; j++) {
-				if (i % 2 == 0){
-					matrix[i][j] = j+1;
+				if (i % 2 == 0) {
+					matrix[i][j] = j + 1;
 					System.out.format("%3d\t", matrix[i][j]);
-				}else {
+				} else {
 					matrix[i][j] = matrix.length - j;
 					System.out.format("%3d\t", matrix[i][j]);
 				}
@@ -64,8 +64,11 @@ public class Task {
 		while (true) {
 			value = getValue();
 
-			if (value > 0 && value % 2 == 0) break;
-			else System.out.println("The value must be even and greater than 0! Enter again: ");
+			if (value > 0 && value % 2 == 0) {
+				break;
+			} else {
+				System.out.println("The value must be even and greater than 0! Enter again: ");
+			}
 		}
 
 		return value;

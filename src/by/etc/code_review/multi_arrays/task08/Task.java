@@ -94,8 +94,11 @@ public class Task {
 		while (true) {
 			value = getValue();
 
-			if (value >= 0 && value < m) break;
-			else System.out.println("The column index must be >= 0 and < M! Enter again: ");
+			if (value >= 0 && value < m) {
+				break;
+			} else {
+				System.out.println("The column index must be >= 0 and < M! Enter again: ");
+			}
 		}
 
 		return value;
@@ -108,8 +111,11 @@ public class Task {
 		while (true) {
 			value = getValue();
 
-			if (value > 0) break;
-			else System.out.println("The value must be >= 0! Enter again: ");
+			if (value > 0) {
+				break;
+			} else {
+				System.out.println("The value must be >= 0! Enter again: ");
+			}
 		}
 
 		return value;

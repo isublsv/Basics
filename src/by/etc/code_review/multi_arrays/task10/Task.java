@@ -31,7 +31,7 @@ public class Task {
 		long sum = 0;
 
 		for (int i = 0; i < matrix.length; i++) {
-			if(matrix[i][i] > 0){
+			if (matrix[i][i] > 0) {
 				sum += matrix[i][i];
 			}
 		}
@@ -80,8 +80,11 @@ public class Task {
 		while (true) {
 			value = getValue();
 
-			if (value > 0) break;
-			else System.out.println("The value must be >= 0! Enter again: ");
+			if (value > 0) {
+				break;
+			} else {
+				System.out.println("The value must be greater than 0! Enter again: ");
+			}
 		}
 
 		return value;

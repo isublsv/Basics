@@ -16,8 +16,7 @@ public class Task {
 			System.out.println("Please, enter matrix dimension N:");
 			int n = checkValue();
 
-			System.out.println("The number of positive elements in the matrix = "
-					+ getNumberPositiveElements(n));
+			System.out.println("The number of positive elements in the matrix = " + getNumberPositiveElements(n));
 		} finally {
 			if (scanner != null) {
 				scanner.close();
@@ -32,9 +31,9 @@ public class Task {
 
 		for (int i = 0; i < matrix.length; i++) {
 			for (int j = 0; j < matrix[i].length; j++) {
-				matrix[i][j] = Math.sin((Math.pow(i, 2) - Math.pow(j, 2))/matrix.length);
+				matrix[i][j] = Math.sin((Math.pow(i, 2) - Math.pow(j, 2)) / matrix.length);
 				System.out.format("%4f\t", matrix[i][j]);
-				if (matrix[i][j] > 0){
+				if (matrix[i][j] > 0) {
 					counter++;
 				}
 			}
@@ -60,8 +59,11 @@ public class Task {
 		while (true) {
 			value = getValue();
 
-			if (value > 0) break;
-			else System.out.println("The value must be greater than 0! Enter again: ");
+			if (value > 0) {
+				break;
+			} else {
+				System.out.println("The value must be greater than 0! Enter again: ");
+			}
 		}
 
 		return value;

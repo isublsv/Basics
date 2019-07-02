@@ -96,8 +96,9 @@ public class Task {
 		while (true) {
 			value = getValue();
 
-			if (value >= 0) break;
-			else System.out.println("The N must be greater than zero! Enter again: ");
+			if (value >= 0) {
+				break;
+			} else System.out.println("The N must be greater than zero! Enter again: ");
 		}
 
 		return value;
@@ -110,8 +111,11 @@ public class Task {
 		while (true) {
 			value = getValue();
 
-			if (value >= 0 && value <= n) break;
-			else System.out.println("The K must be greater than zero and less than N! Enter again: ");
+			if (value >= 0 && value <= n) {
+				break;
+			} else {
+				System.out.println("The K must be greater than zero and less than N! Enter again: ");
+			}
 		}
 
 		return value;
