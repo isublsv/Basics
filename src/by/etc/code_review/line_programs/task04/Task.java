@@ -33,7 +33,7 @@ public class Task {
 		double mod = abs(number);           //get the absolute value of the number
 		int integerPart = (int) mod;            //get integer part of the number (nnn)
 		int decimalPart = (int) round(((mod - integerPart) * 1000));            //get decimal part of the number (ddd)
-		return Double.parseDouble(decimalPart + "." + integerPart);         //parse to double
+		return decimalPart + integerPart / 1000d;
 	}
 
 	private static double getValue() {
