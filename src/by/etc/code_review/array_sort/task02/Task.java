@@ -47,26 +47,37 @@ public class Task {
 		int k;          //index in new array
 
 		for (k = 0; k < newArray.length; k++) {
-			if (firstArray[i] < secondArray[j]) {       //compare elements of both arrays
-				if (i < firstArray.length - 1) {        //if index is not out of bound of first array
-					newArray[k] = firstArray[i++];      //store the element of the first array in a new array
+			//compare elements of both arrays
+			if (firstArray[i] < secondArray[j]) {
+				//if index is the last element of first array
+				if (i == firstArray.length - 1) {
+					//store the element of the first array in a new array
+					newArray[k++] = firstArray[i++];
+					//exit from the cycle
+					break;
 				} else {
-					break;                              //else exit from the cycle
+					//store the element of the first array in a new array and move next
+					newArray[k] = firstArray[i++];
 				}
 			} else {
-				if (j < secondArray.length - 1) {       //vice versa
-					newArray[k] = secondArray[j++];
-				} else {
+				//all the same as for first array
+				if (j == secondArray.length - 1) {
+					newArray[k++] = secondArray[j++];
 					break;
+				} else {
+					newArray[k] = secondArray[j++];
+
 				}
 			}
 		}
 
-		while (i < firstArray.length) {                 //if we reached the end of second array in the previous cycle
-			newArray[k++] = firstArray[i++];            //than add all remaining elements from the first array to the new one
+		//if we reached the end of second array in the previous cycle
+		while (i < firstArray.length) {
+			//add all remaining elements from the first array to the new one
+			newArray[k++] = firstArray[i++];
 		}
 
-		while (j < secondArray.length) {                //vice versa
+		while (j < secondArray.length) {
 			newArray[k++] = secondArray[j++];
 		}
 
