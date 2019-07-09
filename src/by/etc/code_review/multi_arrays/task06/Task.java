@@ -37,8 +37,6 @@ public class Task {
 			for (int j = 0; j < matrix[i].length; j++) {
 				if ((j >= i && j <= n - i - 1) || (j <= i && j >= n - i - 1)) {
 					matrix[i][j] = 1;
-				} else {
-					matrix[i][j] = 0;
 				}
 				System.out.format("%3d\t", matrix[i][j]);
 			}
