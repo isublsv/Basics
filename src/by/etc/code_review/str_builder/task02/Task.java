@@ -36,6 +36,11 @@ public class Task {
 
 	private static String replaceAllEntries(String testString, String what, String to) {
 
+		if (testString.length() == 0){
+			System.out.println("The given string is empty!");
+			return "";
+		}
+
 		return testString.replaceAll(what, to);
 	}
 }

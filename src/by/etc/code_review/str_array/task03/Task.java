@@ -18,7 +18,6 @@ public class Task {
 			String testString = scanner.nextLine();
 			//String testString = "For example, 3.14 = 03.14 = 003.14.";
 
-
 			int number = getNumberOfDigits(testString);
 
 			System.out.println("The number of digits in the string = " + number);
@@ -33,6 +32,11 @@ public class Task {
 	private static int getNumberOfDigits(String testString) {
 
 		int counter = 0;
+
+		if (testString.length() == 0){
+			System.out.println("The given string is empty!");
+			return counter;
+		}
 
 		char[] chars = testString.toCharArray();
 

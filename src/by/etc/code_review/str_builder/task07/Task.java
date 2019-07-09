@@ -31,6 +31,11 @@ public class Task {
 
 	private static String removeDuplicatesAndSpaces(String testString) {
 
+		if (testString.length() == 0){
+			System.out.println("The given string is empty!");
+			return "";
+		}
+
 		StringBuilder sb = new StringBuilder();
 		String current;     //current symbol
 

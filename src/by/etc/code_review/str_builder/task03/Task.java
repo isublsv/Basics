@@ -38,6 +38,12 @@ public class Task {
 	}
 
 	private static boolean isPalindrome(String word) {
+
+		if (word.length() == 0){
+			System.out.println("The given string is empty!");
+			return false;
+		}
+
 		return word.equalsIgnoreCase(new StringBuilder(word).reverse().toString());
 	}
 }

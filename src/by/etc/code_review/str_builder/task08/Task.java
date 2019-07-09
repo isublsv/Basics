@@ -31,6 +31,11 @@ public class Task {
 
 	private static String getLongestWord(String testString) {
 
+		if (testString.length() == 0){
+			System.out.println("The given string is empty!");
+			return "";
+		}
+
 		String[] words = testString.split(" ");
 
 		String longestWord = "";

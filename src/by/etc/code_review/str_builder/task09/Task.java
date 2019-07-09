@@ -29,6 +29,11 @@ public class Task {
 
 	private static void getLongestWord(String testString) {
 
+		if (testString.length() == 0){
+			System.out.println("The given string is empty!");
+			return;
+		}
+
 		int upperCaseCounter = 0;
 		int lowerCaseCounter = 0;
 

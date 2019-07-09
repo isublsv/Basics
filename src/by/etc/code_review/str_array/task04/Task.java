@@ -1,44 +1,38 @@
 package by.etc.code_review.str_array.task04;
 
-import java.util.Scanner;
-
 /**
  * 4. В строке найти количество чисел.
  */
 
 public class Task {
 
-	private static Scanner scanner = new Scanner(System.in);
 
 	public static void main(String[] args) {
 
-		try {
-			System.out.println("Please, enter the string:");
+		//String testString = "For example, 3.14 = 03.14 = 003.14. 22 123.23";
+		String testString = "";
 
-			String testString = scanner.nextLine();
-			//String testString = "For example, 3.14 = 03.14 = 003.14. 22 123.23";
+		int number = getNumberOfNumbers(testString);
 
-
-			int number = getNumberOfNumbers(testString);
-
-			System.out.println("The number of digits in the string = " + number);
-
-		} finally {
-			if (scanner != null) {
-				scanner.close();
-			}
-		}
+		System.out.println("The number of digits in the string = " + number);
 	}
 
 	private static int getNumberOfNumbers(String testString) {
 
 		int counter = 0;
+
+		if (testString.length() == 0){
+			System.out.println("The given string is empty!");
+			return counter;
+		}
+
 		boolean isNumber = false;       //signals that the number is found
 
 		char[] chars = testString.toCharArray();
 
 		for (int i = 0; i < chars.length - 1; i++) {
-			if (isDigit(chars[i]) && isDigit(chars[i + 1])) {  //if current char is digit and the next char is '.' or digit
+			//if current char is digit and the next char is '.' or digit
+			if (isDigit(chars[i]) && isDigit(chars[i + 1])) {
 				if (!isNumber) {
 					counter++;
 					isNumber = true;
@@ -48,13 +42,13 @@ public class Task {
 			}
 		}
 
-
 		return counter;
 	}
 
 	private static boolean isDigit(char c) {
 		for (int i = '0'; i < '9'; i++) {
-			if (c == i || c == '.') {       //'.' is for the decimal numbers
+			//'.' is for the decimal numbers
+			if (c == i || c == '.') {
 				return true;
 			}
 		}

@@ -32,6 +32,11 @@ public class Task {
 
 	private static String getStrWithDoubleSymbols(String testString) {
 
+		if (testString.length() == 0){
+			System.out.println("The given string is empty!");
+			return "";
+		}
+
 		StringBuilder sb = new StringBuilder();
 		char current;
 

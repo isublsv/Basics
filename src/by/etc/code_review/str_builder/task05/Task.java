@@ -36,6 +36,11 @@ public class Task {
 
 		int counter = 0;
 
+		if (testString.length() == 0){
+			System.out.println("The given string is empty!");
+			return counter;
+		}
+
 		for (int i = 0; i < testString.length(); i++) {
 			char current = testString.charAt(i);
 			if (current == symbol || current == (symbol & 0x5f)) {      // symbol & 0x5f - toUpperCase

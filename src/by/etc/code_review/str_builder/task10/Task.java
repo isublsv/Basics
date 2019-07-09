@@ -31,6 +31,12 @@ public class Task {
 	}
 
 	private static int getNumberOfSentences(String testString) {
+
+		if (testString.length() == 0){
+			System.out.println("The given string is empty!");
+			return 0;
+		}
+
 		return testString.split("(?<=[a-z\\d][?.!]\\s)").length;          //[a-z\d]+[.!?]\s+
 	}                                                                           //[?!.](?!\d)|(?<!\d)\.
 }

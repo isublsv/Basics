@@ -15,6 +15,12 @@ public class Task {
 	}
 
 	private static String makeNewWord(String testWord) {
+
+		if (testWord.length() == 0){
+			System.out.println("The given string is empty!");
+			return "";
+		}
+
 		char[] newStr = new char[4];
 
 		testWord.getChars(7, 8, newStr, 0);
