@@ -19,7 +19,7 @@ public class TimeRunner {
 
 		System.out.println(time);
 
-		time = new Time(25, 59, 70);
+		time = new Time(25, 20, 70);
 
 		System.out.println(time);
 
@@ -27,20 +27,12 @@ public class TimeRunner {
 
 		System.out.println(time);
 
-		time.addMinutes(20);
+		time.addMinutes(-55);
 
 		System.out.println(time);
 
-		time.addSeconds(3700);
+		time.addSeconds(-3700);
 
 		System.out.println(time);
-
-/*      Output:
-				Current time is 0 hours, 0 minutes, 0 seconds.
-				Current time is 0 hours, 59 minutes, 0 seconds.
-				Current time is 7 hours, 59 minutes, 0 seconds.
-				Current time is 8 hours, 19 minutes, 0 seconds.
-				Current time is 10 hours, 20 minutes, 40 seconds.
-				Current time is 10 hours, 20 minutes, 0 seconds.*/
 	}
 }

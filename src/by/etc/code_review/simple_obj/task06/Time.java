@@ -48,8 +48,7 @@ public class Time {
 		if (this.hours >= 0) {
 			this.hours = this.hours % 24;
 		} else {
-			setHours(this.hours);
-			//this.hours = 24 - Math.abs(this.hours % 24);   //if we need to support negative operations with the hours
+			this.hours = 24 - Math.abs(this.hours % 24);
 		}
 	}
 
@@ -73,11 +72,13 @@ public class Time {
 
 		if (this.minutes >= 0) {
 			if (this.minutes >= 60) {
-				this.hours += this.minutes / 60;
+				addHours(this.minutes / 60);
 				this.minutes = this.minutes % 60;
 			}
 		} else {
-			setMinutes(this.minutes);
+			this.minutes = getHours() * 60 + this.minutes;
+			setHours(this.minutes / 60);
+			this.minutes = Math.abs(this.minutes % 60);
 		}
 
 	}
@@ -107,7 +108,10 @@ public class Time {
 				this.seconds = this.seconds % 60;
 			}
 		} else {
-			setSeconds(this.seconds);
+			this.seconds = getHours() * 3600 + getMinutes() * 60 + this.seconds;
+			setHours(this.seconds / 3600);
+			setMinutes((this.seconds - getHours() * 3600)/ 60);
+			this.seconds = this.seconds % 60;
 		}
 
 	}
