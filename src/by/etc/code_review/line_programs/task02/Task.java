@@ -34,7 +34,7 @@ public class Task {
 
 	private static double calculateExpression(double a, double b, double c) {
 		double sqrt = sqrt(pow(b, 2) + 4 * a * c);
-		return (b + sqrt) / 2 * a - pow(a, 3) * c + pow(b, -2);
+		return (b + sqrt) / (2 * a) - pow(a, 3) * c + pow(b, -2);
 	}
 
 	private static double getValue() {
