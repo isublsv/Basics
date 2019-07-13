@@ -15,7 +15,7 @@ Package description:
 Package description:
 - The **str_array** package contains solutions of the tasks about working with a string as an array of characters.
 - The **str_builder** package contains solutions of the tasks about String and StringBuilder objects.
-
+- The **str_regexp** package contains solutions of the task about the regular expressions.
 
 # Programming with classes
 Package description:
