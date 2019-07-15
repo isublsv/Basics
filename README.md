@@ -20,5 +20,6 @@ Package description:
 # Programming with classes
 Package description:
 - The **simple_obj** package contains solutions of the tasks about simple classes and objects.
+- The **agr_comp** package contains solutions of the tasks about aggregation and composition.
 
 Each class has task description.
