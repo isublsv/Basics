@@ -1,7 +1,6 @@
 package by.etc.code_review.agr_comp.task04.entity;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Client {
@@ -36,22 +35,26 @@ public class Client {
 	//shell sort
 	public void sortAccountsByBalance() {
 
-		int i = 0;
+		int in, out;
+		Account temp;
+		int h = 1;
 
-		while (i < accounts.size() - 1) {
-			double max = accounts.get(i).getBalance();
-			double next = accounts.get(i + 1).getBalance();
+		//found initial step value
+		while (h <= accounts.size()) {
+			h = h * 3 + 1;
+		}
 
-			if (max > next) {
-				i++;
-			} else {
-				Collections.swap(accounts, i, i + 1);
-				if (i > 1) {
-					i--;
-				} else {
-					i = 0;
+		while (h > 0) {
+			for (out = h; out < accounts.size(); out++) {
+				temp = accounts.get(out);
+				in = out;
+				while (in > h - 1 && accounts.get(in - h).getBalance() >= temp.getBalance()) {
+					accounts.set(in, accounts.get(in - h));
+					in -= h;
 				}
+				accounts.set(in, temp);
 			}
+			h = (h - 1) / 3;    //decrease h
 		}
 	}
 

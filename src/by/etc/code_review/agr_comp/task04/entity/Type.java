@@ -7,6 +7,7 @@ package by.etc.code_review.agr_comp.task04.entity;
  * 3. Checking Account
  * 4. Certificate of Deposit
  * 5. Money Market Account
+ * 6. Individual Retirement Account
  */
 public enum Type {
 	CURRENT,
