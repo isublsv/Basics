@@ -4,18 +4,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-/**
- * 1. Создать приложение, разбирающее текст (текст хранится в строке) и позволяющее выполнить с текстом три различных
- * операции: отсортировать обзацы по количеству предложений; в каждом предложении отсортировать слова по длине;
- * отсортировать лексемы в предложении по убыванию количества вхождений заданного символа, а в случае равенства - по
- * алфавиту.
- */
-
 public class Menu {
 
 	private static Scanner scanner;
 
-	public static void main(String[] args) {
+	public void run() {
 
 		try {
 			String testString = getString();
@@ -63,7 +56,7 @@ public class Menu {
 
 	private static String getString() {
 
-		String fileName = "D:/WORK/Dropbox/Java/Basics/src/by/etc/code_review/str_regexp/task01/random_text.txt";
+		String fileName = "data/random_text.txt";
 
 		StringBuilder sb = new StringBuilder();
 		try {
