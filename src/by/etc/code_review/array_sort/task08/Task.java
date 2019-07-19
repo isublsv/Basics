@@ -42,27 +42,28 @@ public class Task {
 	}
 
 	//shell sort
-	private static int[] sortArrOfNumerators(int[] arr) {
-		int i = 0;
-		while (i < arr.length - 1) {
-			if (arr[i] <= arr[i + 1]) {
-				i++;
-			} else {
-				swap(arr, i, i + 1);
-				if (i > 1) {
-					i--;
-				} else {
-					i = 0;
-				}
-			}
-		}
-		return arr;
-	}
+	private static void sortArrOfNumerators(int[] arr) {
+		int in, out;
+		int temp;
+		int h = 1;
 
-	private static void swap(int[] arr, int i, int j) {
-		int temp = arr[i];
-		arr[i] = arr[j];
-		arr[j] = temp;
+		//found initial step value
+		while (h <= arr.length) {
+			h = h * 3 + 1;
+		}
+
+		while (h > 0) {
+			for (out = h; out < arr.length; out++) {
+				temp = arr[out];
+				in = out;
+				while (in > h - 1 && arr[in - h] >= temp) {
+					arr[in] = arr[in - h];
+					in -= h;
+				}
+				arr[in] = temp;
+			}
+			h = (h - 1) / 3;    //decrease h
+		}
 	}
 
 	private static int[] getFinalArrayOfNumerators(int[] numerators, int[] denominators, int nok) {
