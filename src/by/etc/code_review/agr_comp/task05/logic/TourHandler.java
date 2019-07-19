@@ -3,28 +3,33 @@ package by.etc.code_review.agr_comp.task05.logic;
 import by.etc.code_review.agr_comp.task05.entity.Agency;
 import by.etc.code_review.agr_comp.task05.entity.tour.Tour;
 
-import java.util.Collections;
 import java.util.List;
 
 public class TourHandler {
 
+	//shell sort
 	public static void sortTourByPrice(Agency agency) {
 
-		int i = 0;
-		while (i < agency.getTours().size() - 1) {
-			double max = agency.getTours().get(i).getPrice();
-			double next = agency.getTours().get(i + 1).getPrice();
+		int in, out;
+		Tour temp;
+		int h = 1;
 
-			if (max < next) {
-				i++;
-			} else {
-				Collections.swap(agency.getTours(), i, i + 1);
-				if (i > 1) {
-					i--;
-				} else {
-					i = 0;
+		//found initial step value
+		while (h <= agency.getTours().size()) {
+			h = h * 3 + 1;
+		}
+
+		while (h > 0) {
+			for (out = h; out < agency.getTours().size(); out++) {
+				temp = agency.getTours().get(out);
+				in = out;
+				while (in > h - 1 && agency.getTours().get(in - h).getPrice() >= temp.getPrice()) {
+					agency.getTours().set(in, agency.getTours().get(in - h));
+					in -= h;
 				}
+				agency.getTours().set(in, temp);
 			}
+			h = (h - 1) / 3;    //decrease h
 		}
 	}
 
