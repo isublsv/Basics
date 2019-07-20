@@ -7,7 +7,7 @@ public class Armor extends Treasure {
 	private int defence;
 
 	public Armor() {
-		this.defence = setRandomParameter();
+		this.defence = getRandomParameter();
 	}
 
 	public int getDefence() {
@@ -20,14 +20,14 @@ public class Armor extends Treasure {
 
 	@Override
 	public void setRandomName() {
-		int value = getRandom().nextInt(ArmorType.values().length);
+		int value = random.nextInt(ArmorType.values().length);
 		ArmorType[] types = ArmorType.values();
 		setName(types[value].getName());
 	}
 
 	@Override
-	public int setRandomParameter() {
-		return getRandom().nextInt(50) + 10;
+	public int getRandomParameter() {
+		return random.nextInt(50) + 10;
 	}
 
 	@Override

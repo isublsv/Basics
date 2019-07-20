@@ -7,7 +7,7 @@ public class Artifact extends Treasure {
 	private int power;
 
 	public Artifact() {
-		this.power = setRandomParameter();
+		this.power = getRandomParameter();
 	}
 
 	public int getPower() {
@@ -20,14 +20,14 @@ public class Artifact extends Treasure {
 
 	@Override
 	public void setRandomName() {
-		int value = getRandom().nextInt(ArtifactType.values().length);
+		int value = random.nextInt(ArtifactType.values().length);
 		ArtifactType[] types = ArtifactType.values();
 		setName(types[value].getName());
 	}
 
 	@Override
-	public int setRandomParameter() {
-		return getRandom().nextInt(25) + 5;
+	public int getRandomParameter() {
+		return random.nextInt(25) + 5;
 	}
 
 	@Override

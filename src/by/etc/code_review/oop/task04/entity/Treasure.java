@@ -8,11 +8,10 @@ public abstract class Treasure implements Comparable<Treasure>{
 	private int id;
 	private String name;
 	private int value;
-	private Random random;
+	public static Random random = new Random();
 
 	public Treasure() {
 		this.id = genId++;
-		random = new Random();
 	}
 
 	public int getId() {
@@ -35,13 +34,9 @@ public abstract class Treasure implements Comparable<Treasure>{
 		this.value = value;
 	}
 
-	protected Random getRandom() {
-		return random;
-	}
-
 	public abstract void setRandomName();
 
-	public abstract int setRandomParameter();
+	public abstract int getRandomParameter();
 
 	public void setRandomValue() {
 		this.value = random.nextInt(999) + 1;

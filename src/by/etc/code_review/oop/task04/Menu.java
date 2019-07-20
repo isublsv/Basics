@@ -2,12 +2,13 @@ package by.etc.code_review.oop.task04;
 
 import by.etc.code_review.oop.task04.entity.DragonCave;
 import by.etc.code_review.oop.task04.entity.Treasure;
+import by.etc.code_review.oop.task04.utils.DragonCaveUtils;
 
 import java.util.Scanner;
 
 public class Menu {
 
-	private DragonCave dragonCave = new DragonCave();
+	private DragonCaveUtils dragonCave = new DragonCaveUtils(new DragonCave());
 	private static Scanner scanner = new Scanner(System.in);
 
 	public void run() {

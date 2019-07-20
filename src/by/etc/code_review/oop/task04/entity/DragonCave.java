@@ -6,7 +6,6 @@ import by.etc.code_review.oop.task04.entity.jewelry.Jewelry;
 import by.etc.code_review.oop.task04.entity.weapon.Weapon;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -52,37 +51,5 @@ public class DragonCave {
 			default:
 				throw new IllegalArgumentException("Wrong argument: " + String.valueOf(random));
 		}
-	}
-
-	public void printTreasures(){
-		if (treasures.isEmpty()){
-			System.out.println("The cave is empty!");
-			return;
-		}
-
-		for (Treasure treasure : treasures){
-			System.out.println(treasure);
-		}
-	}
-
-	public Treasure getTheMostExpensiveTreasure() {
-		return Collections.max(treasures);
-	}
-
-
-	public int findTreasuresForSum(int sum) {
-		if (sum < 0){
-			System.out.println("The sum is too low!");
-			return 0;
-		}
-
-		for (Treasure treasure : treasures){
-			if (sum > treasure.getValue()){
-				System.out.println(treasure);
-				sum -=treasure.getValue();
-			}
-		}
-
-		return sum;
 	}
 }

@@ -7,7 +7,7 @@ public class Jewelry extends Treasure {
 	private int magic;
 
 	public Jewelry() {
-		this.magic = setRandomParameter();
+		this.magic = getRandomParameter();
 	}
 
 	public int getMagic() {
@@ -20,14 +20,14 @@ public class Jewelry extends Treasure {
 
 	@Override
 	public void setRandomName() {
-		int value = getRandom().nextInt(JewelryType.values().length);
+		int value = random.nextInt(JewelryType.values().length);
 		JewelryType[] types = JewelryType.values();
 		setName(types[value].getName());
 	}
 
 	@Override
-	public int setRandomParameter() {
-		return getRandom().nextInt(20) + 1;
+	public int getRandomParameter() {
+		return random.nextInt(20) + 1;
 	}
 
 	@Override

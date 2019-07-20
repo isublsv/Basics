@@ -7,7 +7,7 @@ public class Weapon extends Treasure {
 	private int attack;
 
 	public Weapon() {
-		this.attack = setRandomParameter();
+		this.attack = getRandomParameter();
 	}
 
 	public int getAttack() {
@@ -20,14 +20,14 @@ public class Weapon extends Treasure {
 
 	@Override
 	public void setRandomName() {
-		int value = getRandom().nextInt(WeaponType.values().length);
+		int value = random.nextInt(WeaponType.values().length);
 		WeaponType[] types = WeaponType.values();
 		setName(types[value].getName());
 	}
 
 	@Override
-	public int setRandomParameter() {
-		return getRandom().nextInt(9) + 1;
+	public int getRandomParameter() {
+		return random.nextInt(9) + 1;
 	}
 
 	@Override
