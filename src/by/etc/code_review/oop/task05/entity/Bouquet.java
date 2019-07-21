@@ -14,6 +14,13 @@ public class Bouquet {
 	private List<Flower> flowers;
 	private List<Wrap> wraps;
 
+	public Bouquet() {
+		this.id = getId++;
+		this.name = "Wedding bouquet";
+		flowers = new ArrayList<>();
+		wraps = new ArrayList<>();
+	}
+
 	public Bouquet(String name) {
 		this.id = getId++;
 		this.name = name;

@@ -44,7 +44,8 @@ public class Cloth extends Wrap {
 
 	@Override
 	public String toString() {
-		return super.toString() + " " + type.getName().toLowerCase() + ", with texture (" + texture +
-				") and density " + density.getValue() + "g/m2, price = " + getPrice();
+		return super.toString() + " " + type.getName()
+		                                    .toLowerCase() + ", with texture (" + texture + ") and density "
+				+ density.getValue() + "g/m2, price = " + getPrice() + "$";
 	}
 }

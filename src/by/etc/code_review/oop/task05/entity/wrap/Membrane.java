@@ -33,6 +33,6 @@ public class Membrane extends Wrap {
 	@Override
 	public String toString() {
 		return super.toString() + " " + type.getName()
-		                                    .toLowerCase() + ", with density " + density.getValue() + "g/m2, price = " + getPrice();
+		                                    .toLowerCase() + ", with density " + density.getValue() + "g/m2, price = " + getPrice() + "$";
 	}
 }

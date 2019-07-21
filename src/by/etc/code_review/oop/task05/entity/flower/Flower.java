@@ -1,43 +1,21 @@
 package by.etc.code_review.oop.task05.entity.flower;
 
 import by.etc.code_review.oop.task05.entity.Color;
+import by.etc.code_review.oop.task05.entity.Entity;
 
-import java.util.Random;
+public abstract class Flower extends Entity {
 
-public abstract class Flower {
-
-	private static int genId = 1;
-	private int id;
-	private Color color;
-	private String producer;
 	protected FlowerType type;
-	private double price;
-	public static Random random = new Random();
+	private String producer;
 
 	public Flower() {
-		color = Color.RED;
+		super();
 		producer = "Belarus";
-		type = FlowerType.ROSE;
-		price = 5.0;
 	}
 
 	public Flower(Color color, String producer) {
-		this.id = genId++;
-		this.color = color;
+		super(color);
 		this.producer = producer;
-		this.price = getRandomPrice();
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public Color getColor() {
-		return color;
-	}
-
-	public void setColor(Color color) {
-		this.color = color;
 	}
 
 	public String getProducer() {
@@ -52,19 +30,28 @@ public abstract class Flower {
 		return type;
 	}
 
-	public double getPrice() {
-		return price;
-	}
-
-	public void setPrice(double price) {
-		this.price = price;
-	}
-
-	public abstract double getRandomPrice();
-
 	@Override
 	public String toString() {
-		return "The " + color.getName().toLowerCase() + " " + producer + " " + type.getName()
-		                                                                           .toLowerCase() + ", price = " + price;
+		return super.toString() + " " + producer + " " + type.getName().toLowerCase() + ", price = " + getPrice() + "$";
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		Flower flower = (Flower) o;
+
+		if (type != flower.type) return false;
+		if (getColor() != flower.getColor()) return false;
+		return producer != null ? producer.equals(flower.producer) : flower.producer == null;
+	}
+
+	@Override
+	public int hashCode() {
+		int result =  type.hashCode();
+		result = 31 * result + getColor().hashCode();
+		result += producer.hashCode();
+		return result;
 	}
 }

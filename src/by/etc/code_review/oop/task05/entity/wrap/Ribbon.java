@@ -34,6 +34,7 @@ public class Ribbon extends Wrap {
 
 	@Override
 	public String toString() {
-		return super.toString() + " " + type.getName().toLowerCase() + " " + length + "m long, price = " + getPrice();
+		return super.toString() + " " + type.getName()
+		                                    .toLowerCase() + " " + length + "m long, price = " + getPrice() + "$";
 	}
 }

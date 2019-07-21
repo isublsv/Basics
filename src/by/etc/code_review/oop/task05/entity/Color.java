@@ -6,6 +6,10 @@ public enum Color {
 	BLUE("Blue"),
 	WHITE("White"),
 	PURPLE("Purple"),
+	ORANGE("Orange"),
+	GOLDEN("Golden"),
+	CORAL("Coral"),
+	CYAN("Cyan"),
 	PINK("Pink");
 
 	private String name;

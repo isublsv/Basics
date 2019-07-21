@@ -1,5 +1,7 @@
 package by.etc.code_review.oop.task05;
 
+import by.etc.code_review.oop.task05.entity.Bouquet;
+import by.etc.code_review.oop.task05.utils.BouquetBuilder;
 import by.etc.code_review.oop.task05.utils.BouquetUtils;
 
 import java.util.Scanner;
@@ -28,8 +30,16 @@ public class Menu {
 			System.out.println("Please, enter the number of wraps you want:");
 			int numberOfWraps = checkValue();
 
-			BouquetUtils bouquet = new BouquetUtils(name, producer, numberOfFlowers, numberOfWraps);
-			bouquet.printBouquet();
+			Bouquet bouquet = new BouquetBuilder()
+					.withName(name)
+					.setProducer(producer)
+					.setNumberOfFlowers(numberOfFlowers)
+					.setNumberOfWrap(numberOfWraps)
+					.buildBouquet();
+
+			BouquetUtils bouquetUtils = new BouquetUtils(bouquet);
+
+			bouquetUtils.printBouquet();
 
 		} finally {
 			if (scanner != null) {

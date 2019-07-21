@@ -4,7 +4,7 @@ import by.etc.code_review.oop.task05.entity.Color;
 
 public class Piony extends Flower {
 
-	public Piony( Color color, String producer) {
+	public Piony(Color color, String producer) {
 		super(color, producer);
 		type = FlowerType.PIONY;
 	}

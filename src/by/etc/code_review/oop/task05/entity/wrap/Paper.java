@@ -34,6 +34,6 @@ public class Paper extends Wrap {
 	@Override
 	public String toString() {
 		return super.toString() + " " + type.getName()
-		                                    .toLowerCase() + ", texture (" + texture + "), price = " + getPrice();
+		                                    .toLowerCase() + ", texture (" + texture + "), price = " + getPrice() + "$";
 	}
 }

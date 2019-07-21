@@ -1,51 +1,44 @@
 package by.etc.code_review.oop.task05.entity.wrap;
 
 import by.etc.code_review.oop.task05.entity.Color;
+import by.etc.code_review.oop.task05.entity.Entity;
 
-import java.util.Random;
+public abstract class Wrap extends Entity {
 
-public abstract class Wrap {
-
-	private Color color;
-	private double price;
 	protected WrapType type;
-	public static Random random = new Random();
 
 	public Wrap() {
-		color = Color.RED;
-		price = 1.0;
-		type = WrapType.PAPER;
+		super();
 	}
 
 	public Wrap(Color color) {
-		this.price = getRandomPrice();
-		this.color = color;
-	}
-
-	public Color getColor() {
-		return color;
-	}
-
-	public void setColor(Color color) {
-		this.color = color;
-	}
-
-	public void setPrice(double price) {
-		this.price = price;
-	}
-
-	public double getPrice() {
-		return price;
+		super(color);
 	}
 
 	public WrapType getType() {
 		return type;
 	}
 
-	public abstract double getRandomPrice();
-
 	@Override
 	public String toString() {
-		return "The " + color.getName().toLowerCase();
+		return super.toString();
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		Wrap wrap = (Wrap) o;
+
+		if (getColor() != wrap.getColor()) return false;
+		return type == wrap.type;
+	}
+
+	@Override
+	public int hashCode() {
+		int result = getColor().hashCode();
+		result = result * 31 + type.hashCode();
+		return result;
 	}
 }
