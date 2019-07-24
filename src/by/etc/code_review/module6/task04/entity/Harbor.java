@@ -11,14 +11,16 @@ public class Harbor {
 	private BlockingQueue<Pier> piers;
 	private Semaphore semaphore;
 	private int numberOfPiers;
+	private int storageCapacity;
 	private BlockingQueue<Cargo> storage;
 
 	public Harbor(String name, int numberOfPiers, int storageCapacity) {
 		this.name = name;
+		setNumberOfPiers(numberOfPiers);
+		setStorageCapacity(storageCapacity);
 		piers = new ArrayBlockingQueue<>(numberOfPiers);
 		storage = new ArrayBlockingQueue<>(storageCapacity);
 		semaphore = new Semaphore(numberOfPiers, true);
-		this.numberOfPiers = numberOfPiers;
 		createPiers();
 	}
 
@@ -84,6 +86,30 @@ public class Harbor {
 
 	public BlockingQueue<Cargo> getStorage() {
 		return storage;
+	}
+
+	public int getNumberOfPiers() {
+		return numberOfPiers;
+	}
+
+	public void setNumberOfPiers(int numberOfPiers) {
+		if (numberOfPiers <= 0) {
+			throw new IllegalArgumentException("Must be greater than 0: " + numberOfPiers);
+		} else {
+			this.numberOfPiers = numberOfPiers;
+		}
+	}
+
+	public int getStorageCapacity() {
+		return storageCapacity;
+	}
+
+	public void setStorageCapacity(int storageCapacity) {
+		if (storageCapacity <= 0) {
+			throw new IllegalArgumentException("Must be greater than 0: " + storageCapacity);
+		} else {
+			this.storageCapacity = storageCapacity;
+		}
 	}
 
 	@Override

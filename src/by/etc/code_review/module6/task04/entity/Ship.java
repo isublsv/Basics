@@ -18,9 +18,9 @@ public class Ship implements Runnable {
 	public Ship(int currentCargoQuantity, int maxCargoQuantity, Harbor harbor) {
 		id = genID++;
 		this.harbor = harbor;
-		shipStorage = new ArrayBlockingQueue<>(maxCargoQuantity);
-		this.maxCargoQuantity = maxCargoQuantity;
+		setMaxCargoQuantity(maxCargoQuantity);
 		setCurrentCargoQuantity(currentCargoQuantity);
+		shipStorage = new ArrayBlockingQueue<>(maxCargoQuantity);
 		fillShip();
 		printShip();
 	}
@@ -99,12 +99,27 @@ public class Ship implements Runnable {
 		}
 	}
 
+	public int getCurrentCargoQuantity() {
+		return currentCargoQuantity;
+	}
 
 	public void setCurrentCargoQuantity(int currentCargoQuantity) {
 		if (currentCargoQuantity <= maxCargoQuantity) {
 			this.currentCargoQuantity = currentCargoQuantity;
 		} else {
-			throw new IllegalArgumentException("Wrong parameter" + currentCargoQuantity);
+			throw new IllegalArgumentException("Must be less than maxCargoQuantity" + currentCargoQuantity);
+		}
+	}
+
+	public int getMaxCargoQuantity() {
+		return maxCargoQuantity;
+	}
+
+	public void setMaxCargoQuantity(int maxCargoQuantity) {
+		if (maxCargoQuantity <= 0) {
+			throw new IllegalArgumentException("Must be greater than 0: " + maxCargoQuantity);
+		} else {
+			this.maxCargoQuantity = maxCargoQuantity;
 		}
 	}
 
