@@ -34,7 +34,7 @@ public class Task {
 
 	private static int sort(int[] array) {
 		int n = array.length;           //
-		int counter = 0;                //the number of swap
+		int counter = 0;                //the number of swaps
 
 		while (n > 0) {
 			for (int i = 0; i < array.length - 1; i++) {
@@ -47,7 +47,8 @@ public class Task {
 				}
 
 			}
-			n--;       //reduce the length of array because max element in the last position and it doesn't need to swap
+			//reduce the length of array because max element in the last position and it doesn't need to swap
+			n--;
 		}
 		return counter;
 	}
