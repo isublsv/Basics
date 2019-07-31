@@ -25,6 +25,10 @@ public class Account {
 		return type;
 	}
 
+	public void setBalance(double balance) {
+		this.balance = balance;
+	}
+
 	public double getBalance() {
 		return balance;
 	}
@@ -35,36 +39,6 @@ public class Account {
 
 	public void setBlocked(boolean blocked) {
 		isBlocked = blocked;
-	}
-
-	public void deposit(double deposit) {
-		if (deposit < 0) {
-			System.out.println("You cannot deposit negative amount of money!");
-
-		} else {
-			balance += deposit;
-			if (balance > 0) {
-				isBlocked = false;
-				System.out.println("Your account " + type + " was unblocked!");
-			} else {
-				isBlocked = true;
-			}
-		}
-	}
-
-	public void withdraw(double withdraw) {
-		if (withdraw < 0) {
-			System.out.println("You cannot withdraw negative amount of money!");
-
-		} else if (!isBlocked) {
-			if (balance < withdraw) {
-				System.out.println("The withdraw number is higher than balance amount!");
-			} else {
-				balance -= withdraw;
-			}
-		} else {
-			System.out.println("The account " + type + " is blocked!");
-		}
 	}
 
 	@Override

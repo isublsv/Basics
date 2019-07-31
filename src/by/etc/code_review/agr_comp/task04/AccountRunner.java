@@ -3,6 +3,7 @@ package by.etc.code_review.agr_comp.task04;
 import by.etc.code_review.agr_comp.task04.entity.Account;
 import by.etc.code_review.agr_comp.task04.entity.Client;
 import by.etc.code_review.agr_comp.task04.entity.Type;
+import by.etc.code_review.agr_comp.task04.utils.ClientUtils;
 
 /**
  * 4. Счета. Клиент может иметь несколько счетов в банке. Учитывать возможность блокировки/разблокировки счета.
@@ -30,23 +31,25 @@ public class AccountRunner {
 		client.addAccount(mm);
 		client.addAccount(ira);
 
-		client.printAccounts();
+		ClientUtils utils = new ClientUtils(client);
+
+		utils.printAccounts();
 
 		System.out.println("Selected account:");
-		client.getAccountByType(Type.MM);
+		utils.getAccountByType(Type.MM);
 
-		client.deposit(Type.CD, 1000);
+		utils.deposit(Type.CD, 1000);
 
-		client.withdraw(Type.MM, 20);
+		utils.withdraw(Type.MM, 20);
 
-		System.out.println("Total balance from all accounts = " + client.getTotalBalance());
+		System.out.println("Total balance from all accounts = " + utils.getTotalBalance());
 
-		System.out.println("Total balance from accounts with only negative balances = " + client.getOnlyNegativeBalances());
+		System.out.println("Total balance from accounts with only negative balances = " + utils.getOnlyNegativeBalances());
 
-		System.out.println("Total balance from account with only positive balances = " + client.getOnlyPositiveBalances());
+		System.out.println("Total balance from account with only positive balances = " + utils.getOnlyPositiveBalances());
 
-		client.sortAccountsByBalance();
+		utils.sortAccountsByBalance();
 
-		client.printAccounts();
+		utils.printAccounts();
 	}
 }
