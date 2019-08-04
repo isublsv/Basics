@@ -26,4 +26,8 @@ Package description:
 Package description:
 - The **oop** package contains solutions of the tasks about object-oriented programming.
 
+# Module 6. Tasks
+Package description:
+- The **module6** package contains solutions of the big tasks.
+
 Each class has task description.
