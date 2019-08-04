@@ -126,7 +126,7 @@ public class StringHandler {
 		int key;    //the key is the length of current sentence
 
 		//found initial step value
-		while (h <= arr.length) {
+		while (h <= arr.length / 3) {
 			h = h * 3 + 1;
 		}
 

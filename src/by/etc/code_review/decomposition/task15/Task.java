@@ -49,7 +49,7 @@ public class Task {
 		while (i > 0) {
 			current = (int) i % 10;
 			i = i / 10;
-			if (digit <= current) {      //if the next digit greater than or equal the next -  return false;
+			if (digit <= current) {      //if the nextPage digit greater than or equal the nextPage -  return false;
 				return false;
 			}
 			digit = current;

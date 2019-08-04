@@ -40,7 +40,7 @@ public class Task {
 
 			//if we found two adjacent spaces
 			if (strChars[i] <= ' ' && strChars[next] <= ' ') {
-				//move index i to the next position
+				//move index i to the nextPage position
 				while (strChars[next] <= ' ') {
 					next++;
 				}

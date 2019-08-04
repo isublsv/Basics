@@ -15,7 +15,7 @@ public class TourHandler {
 		int h = 1;
 
 		//found initial step value
-		while (h <= agency.getTours().size()) {
+		while (h <= agency.getTours().size() / 3) {
 			h = h * 3 + 1;
 		}
 

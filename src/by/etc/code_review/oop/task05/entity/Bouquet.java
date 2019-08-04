@@ -22,10 +22,8 @@ public class Bouquet {
 	}
 
 	public Bouquet(String name) {
-		this.id = getId++;
+		this();
 		this.name = name;
-		flowers = new ArrayList<>();
-		wraps = new ArrayList<>();
 	}
 
 	public int getId() {

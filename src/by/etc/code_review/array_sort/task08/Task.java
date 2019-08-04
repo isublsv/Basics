@@ -48,7 +48,7 @@ public class Task {
 		int h = 1;
 
 		//found initial step value
-		while (h <= arr.length) {
+		while (h <= arr.length / 3) {
 			h = h * 3 + 1;
 		}
 

@@ -17,7 +17,7 @@ public abstract class Entity {
 	}
 
 	public Entity(Color color) {
-		this.id = genId++;
+		this();
 		this.color = color;
 		this.price = getRandomPrice();
 	}
