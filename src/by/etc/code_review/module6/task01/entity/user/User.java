@@ -26,8 +26,12 @@ public class User implements CatalogObserver {
 		if (username.isEmpty() || password.isEmpty()) {
 			throw new IllegalArgumentException("Username or password cannot be empty!");
 		}
+		this.name = "";
+		this.lastname = "";
+		this.sex = Sex.MALE;
 		this.username = username;
 		this.password = password.toCharArray();
+		this.email = new Email("");
 		this.role = Role.USER;
 	}
 
