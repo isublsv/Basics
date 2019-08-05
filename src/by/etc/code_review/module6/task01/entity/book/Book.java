@@ -1,8 +1,10 @@
 package by.etc.code_review.module6.task01.entity.book;
 
+import by.etc.code_review.module6.task01.entity.Content;
+
 import java.util.Arrays;
 
-public class Book {
+public class Book implements Content {
 
 	private static int genId = 1;
 	private int id;

@@ -41,9 +41,11 @@ public class Email {
 	}
 
 	public void printInbox() {
-		for (Letter letter : inbox) {
-			System.out.println(letter);
-		}
+		inbox.forEach(System.out::println);
+	}
+
+	public void printOutbox() {
+		outbox.forEach(System.out::println);
 	}
 
 	@Override

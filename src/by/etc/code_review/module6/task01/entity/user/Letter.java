@@ -1,17 +1,21 @@
 package by.etc.code_review.module6.task01.entity.user;
 
+import by.etc.code_review.module6.task01.entity.Content;
+
 public class Letter {
 
 	private Email from;
 	private Email to;
 	private String subject;
-	private String content;
+	private String text;
+	private Content attachment;
 
-	public Letter(Email from, Email to, String subject, String content) {
+	public Letter(Email from, Email to, String subject, String text, Content attachment) {
 		this.from = from;
 		this.to = to;
 		this.subject = subject;
-		this.content = content;
+		this.text = text;
+		this.attachment = attachment;
 	}
 
 	public Email getFrom() {
@@ -38,16 +42,24 @@ public class Letter {
 		this.subject = subject;
 	}
 
-	public String getContent() {
-		return content;
+	public String getText() {
+		return text;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public void setText(String text) {
+		this.text = text;
+	}
+
+	public Content getAttachment() {
+		return attachment;
+	}
+
+	public void setAttachment(Content attachment) {
+		this.attachment = attachment;
 	}
 
 	@Override
 	public String toString() {
-		return String.format("The letter from %s, to %s, subject: %s\n \"%s\"", from, to, subject, content);
+		return String.format("The letter from %s, to %s, subject: %s\n \"%s\"", from, to, subject, text);
 	}
 }

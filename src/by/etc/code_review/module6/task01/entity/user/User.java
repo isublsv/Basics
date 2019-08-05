@@ -1,7 +1,7 @@
 package by.etc.code_review.module6.task01.entity.user;
 
-import by.etc.code_review.module6.task01.entity.book.Book;
 import by.etc.code_review.module6.task01.entity.CatalogObserver;
+import by.etc.code_review.module6.task01.entity.book.Book;
 import by.etc.code_review.module6.task01.utils.Operation;
 
 public class User implements CatalogObserver {
@@ -104,13 +104,14 @@ public class User implements CatalogObserver {
 		Letter letter;
 		switch (operation) {
 			case ADDED:
-				letter = new Letter(email, this.email, "Catalog Update!", "The next book was added in catalog: " + book.toString());
+				letter = new Letter(email, this.email, "Catalog Update!",
+						"The next book was added in catalog: " + book.toString(), book);
 				email.getOutbox().add(letter);
 				this.email.getInbox().add(letter);
 				break;
 			case REMOVED:
-				letter = new Letter(email, this.email, "Catalog Update!", "The next book was removed from catalog: " + book
-						.toString());
+				letter = new Letter(email, this.email, "Catalog Update!",
+						"The next book was removed from catalog: " + book.toString(), book);
 				email.getOutbox().add(letter);
 				this.email.getInbox().add(letter);
 				break;

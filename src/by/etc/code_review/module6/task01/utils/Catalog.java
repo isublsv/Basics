@@ -1,5 +1,6 @@
 package by.etc.code_review.module6.task01.utils;
 
+import by.etc.code_review.module6.task01.entity.Content;
 import by.etc.code_review.module6.task01.entity.book.Book;
 import by.etc.code_review.module6.task01.entity.book.BookBuilder;
 import by.etc.code_review.module6.task01.entity.book.Type;
@@ -19,20 +20,17 @@ import java.util.stream.Collectors;
 public class Catalog {
 
 	private static Catalog INSTANCE;
-	private static final int PAGE = 5;
 	private static String csvFile = "D:/WORK/Dropbox/Java/Basics/src/by/etc/code_review/module6/task01/data/catalog.csv";
 
 	private List<Book> books;
 	private List<User> users;
 
 	private User user;
-	private int currentPos;
 	private Email systemEmail;
 
 	private Catalog(String username, String password) {
 		this.users = UserUtils.loadUsers();
 		this.user = UserUtils.login(username, password);
-		this.currentPos = 0;
 		this.books = loadBooks();
 		this.systemEmail = new Email("catalog@mail.by");
 	}
@@ -99,10 +97,10 @@ public class Catalog {
 	 * @param subject the subject of the email.
 	 * @param content the content of the email.
 	 */
-	public void sendEmailToAdmins(String subject, String content) {
+	public void sendBookToCaatalog(String subject, String text, Content content) {
 		for (User user : users) {
 			if (UserUtils.isAdmin(user)) {
-				Letter letter = new Letter(this.user.getEmail(), user.getEmail(), subject, content);
+				Letter letter = new Letter(this.user.getEmail(), user.getEmail(), subject, text, content);
 				this.user.getEmail().getOutbox().add(letter);
 				user.getEmail().getInbox().add(letter);
 			}
@@ -230,47 +228,6 @@ public class Catalog {
 
 		return books.stream().filter(book -> book.getTitle().equalsIgnoreCase(title)).collect(Collectors.toList());
 	}
-
-	/**
-	 * Prints the catalog by {@value PAGE} books on the page.
-	 */
-	public void printBooks(List<Book> books) {
-		if (books.isEmpty()) {
-			System.out.println("The list of books is empty!");
-			return;
-		}
-
-		while (currentPos < books.size()) {
-			System.out.println(books.get(currentPos++));
-			if (currentPos % PAGE == 0) {
-				break;
-			}
-		}
-		if (currentPos == books.size()) {
-			currentPos = 0;
-		}
-	}
-
-	/**
-	 * Prints the next page.
-	 */
-	public void nextPage(List<Book> books) {
-		System.out.println("The next page!");
-		printBooks(books);
-	}
-
-	/**
-	 * Prints the previous page.
-	 */
-	public void previousPage(List<Book> books) {
-		System.out.println("The previous page!");
-		this.currentPos -= PAGE;
-		if (this.currentPos < 0) {
-			this.currentPos = 0;
-		}
-		printBooks(books);
-	}
-
 
 	private void notifyObservers(Operation operation, Book book, Email systemEmail) {
 		for (User user : users) {

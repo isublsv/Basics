@@ -5,6 +5,7 @@ import by.etc.code_review.module6.task01.entity.book.BookBuilder;
 import by.etc.code_review.module6.task01.entity.book.Type;
 import by.etc.code_review.module6.task01.entity.user.User;
 import by.etc.code_review.module6.task01.utils.Catalog;
+import by.etc.code_review.module6.task01.utils.Pagination;
 
 /**
  * 1. Создать консольное приложение "Учет книг в домашней библиотеке".
@@ -26,8 +27,10 @@ public class Task {
 
 		Catalog catalog = Catalog.getCatalog("baba_yaga", "admin");
 
-		catalog.printBooks(catalog.getBooks());
-		catalog.nextPage(catalog.getBooks());
+		Pagination<Book> catalogBooks = new Pagination<>(catalog.getBooks());
+		catalogBooks.nextPage();
+		catalogBooks.nextPage();
+		catalogBooks.previousPage();
 
 		Book book = new BookBuilder().withTitle("Java")
 		                             .withAuthors(new String[]{"Bloch"})
@@ -45,21 +48,14 @@ public class Task {
 		catalog.setUser(user);
 
 		System.out.println("=================================");
-		catalog.printBooks(catalog.getBooks());
-		catalog.nextPage(catalog.getBooks());
-
-		catalog.removeBook(book);
+		Pagination<Book> searchBook1 = new Pagination<>(catalog.findBooksByAuthor("Lewis Carroll"));
+		searchBook1.nextPage();
 
 		System.out.println("=================================");
-		catalog.printBooks(catalog.getBooks());
-		catalog.nextPage(catalog.getBooks());
-		catalog.previousPage(catalog.getBooks());
+		Pagination<Book> searchBook2 = new Pagination<>(catalog.findBooksByTitle("Dogsbody"));
+		searchBook2.nextPage();
 
 		System.out.println("=================================");
-		catalog.printBooks(catalog.findBooksByAuthor("Lewis Carroll"));
-
-		System.out.println("=================================");
-
 		Book book2 = new BookBuilder().withTitle("C++")
 		                            .withAuthors(new String[]{"NotBloch"})
 		                            .setPublisher("North Star")
@@ -68,8 +64,9 @@ public class Task {
 		                            .setType(Type.PAPER)
 		                            .build();
 
-		catalog.addBook(book2);
+		catalog.sendBookToCaatalog("Add this book, please!", "It's a very helpful book", book2);
 
 		catalog.getUser().getEmail().printInbox();
+		catalog.getUser().getEmail().printOutbox();
 	}
 }
