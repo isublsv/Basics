@@ -35,7 +35,6 @@ public class Catalog {
 		this.systemEmail = new Email("catalog@mail.by");
 	}
 
-
 	public static Catalog getCatalog(String username, String password) {
 		if (INSTANCE == null) {
 			INSTANCE = new Catalog(username, password);
@@ -95,6 +94,7 @@ public class Catalog {
 	 * Send email to all admin users.
 	 *
 	 * @param subject the subject of the email.
+	 * @param text the text of the email.
 	 * @param content the content of the email.
 	 */
 	public void sendBookToCaatalog(String subject, String text, Content content) {
@@ -167,7 +167,7 @@ public class Catalog {
 	}
 
 	/**
-	 * Backup all catalog in the csv file after each change operation.
+	 * Backup all catalog in the csv file after each catalog change.
 	 */
 	private void saveCatalog() {
 
