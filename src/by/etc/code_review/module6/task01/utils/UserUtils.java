@@ -1,23 +1,30 @@
 package by.etc.code_review.module6.task01.utils;
 
-import by.etc.code_review.module6.task01.entity.user.*;
+import by.etc.code_review.module6.task01.entity.user.Role;
+import by.etc.code_review.module6.task01.entity.user.User;
+import by.etc.code_review.module6.task01.entity.user.UserBuilder;
 
-import java.io.*;
-import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class UserUtils {
 
-	private static String csvFile = "D:/WORK/Dropbox/Java/Basics/src/by/etc/code_review/module6/task01/data/users.csv";
+	private static List<User> users;
 
-	private static List<User> users = new ArrayList<>();
+	static {
+		users = UserFileHandler.loadUsers();
+	}
+
+	public static List<User> getUsers() {
+		return users;
+	}
 
 	/**
 	 * Get user by provided username and password.
 	 *
 	 * @param username the username of user.
 	 * @param password the password of user.
-	 * @return user with full data or throw IllegalArgumentException if user doesn't exist with provided username
+	 * @return the user or throw IllegalArgumentException if user doesn't exist with provided username
 	 * and password.
 	 */
 	public static User login(String username, String password) {
@@ -34,51 +41,22 @@ public class UserUtils {
 	}
 
 	/**
-	 * Load users ti the list from csv file.
-	 *
-	 * @return the list of users.
-	 */
-	public static List<User> loadUsers() {
-
-		String line;
-		String splitBy = ",";
-
-		try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
-
-			while ((line = br.readLine()) != null) {
-
-				String[] data = line.split(splitBy);
-
-
-				User user = new UserBuilder(data[5], data[6]).withName(data[0])
-				                                             .withLastname(data[1])
-				                                             .setSex(Sex.valueOf(data[2].toUpperCase()))
-				                                             .setRole(Role.valueOf(data[3].toUpperCase()))
-				                                             .setEmail(new Email(data[4]))
-				                                             .setSalt(data[7])
-				                                             .build();
-				users.add(user);
-
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return users;
-	}
-
-	/**
 	 * Add user to the user list.
 	 *
-	 * @param user the object to add to the user list
+	 * @param username the username of the user
+	 * @param password the password of the user
 	 * @return false if user exists with provided username, true otherwise.
 	 */
-	public static boolean addUser(User user) {
-		if (isUserExist(user)) {
-			System.out.println("The user with \"" + user.getUsername() + "\" is exist!");
+	public static boolean addUser(String username, String password) {
+		if (isUserExist(username)) {
+			System.out.println("The user with \"" + username + "\" is exist!");
 			return false;
 		} else {
+			String salt = PasswordUtils.getSalt();
+			String securePassword = PasswordUtils.generateSecurePassword(password, salt);
+			User user = new UserBuilder(username, securePassword).setSalt(salt).build();
 			users.add(user);
-			saveUserList();
+			UserFileHandler.saveUserList(users);
 			return true;
 		}
 	}
@@ -86,63 +64,39 @@ public class UserUtils {
 	/**
 	 * Remove user from the user list.
 	 *
-	 * @param user the object to remove from the user list
+	 * @param username the username of the user
+	 * @param password the password of the user
 	 * @return false if user not exists with provided username, true otherwise.
 	 */
-	public static boolean removeUser(User user) {
-		if (!isUserExist(user)) {
-			System.out.println("The user with \"" + user.getUsername() + "\" isn't exist!");
+	public static boolean removeUser(String username, String password) {
+		if (!isUserExist(username)) {
+			System.out.println("The user with \"" + username + "\" isn't exist!");
 			return false;
 		} else {
-			users.remove(user);
-			saveUserList();
-			return true;
-		}
-	}
-
-	/**
-	 * Save user list in the csv file in the next format:
-	 * "name,lastname,sex,role,email,username,securedPassword,salt".
-	 */
-	private static void saveUserList() {
-
-		StringBuilder sb = new StringBuilder();
-		try (BufferedWriter bw = new BufferedWriter(new FileWriter(csvFile))) {
-
-			for (User user : users) {
-				sb.append(user.getName());
-				sb.append(",");
-				sb.append(user.getLastname());
-				sb.append(",");
-				sb.append(user.getSex().name().toLowerCase());
-				sb.append(",");
-				sb.append(user.getRole().name().toLowerCase());
-				sb.append(",");
-				sb.append(user.getEmail());
-				sb.append(",");
-				sb.append(user.getUsername());
-				sb.append(",");
-				sb.append(user.getPassword());
-				sb.append(",");
-				sb.append(user.getSalt());
-
-				bw.newLine();
-				bw.write(sb.toString());
+			Iterator<User> iterator = users.iterator();
+			while (iterator.hasNext()) {
+				User user = iterator.next();
+				if (username.equalsIgnoreCase(user.getUsername())){
+					String salt = user.getSalt();
+					String securedPassword = PasswordUtils.generateSecurePassword(password, salt);
+					if (securedPassword.equalsIgnoreCase(new String(user.getPassword()))){
+						iterator.remove();
+					}
+				}
 			}
-
-		} catch (IOException e) {
-			e.printStackTrace();
+			UserFileHandler.saveUserList(users);
+			return true;
 		}
 	}
 
 	/**
 	 * Checks if user exist with provided username.
 	 *
-	 * @param user the user with provided the username.
+	 * @param username the username.
 	 * @return true if user exist with provided username, false otherwise.
 	 */
-	private static boolean isUserExist(User user) {
-		return users.stream().anyMatch(u -> u.getUsername().equalsIgnoreCase(user.getUsername()));
+	private static boolean isUserExist(String username) {
+		return users.stream().anyMatch(u -> u.getUsername().equalsIgnoreCase(username));
 	}
 
 	/**

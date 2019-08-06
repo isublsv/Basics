@@ -12,7 +12,7 @@ public class Email {
 	private List<Letter> outbox;
 
 	public Email(String name) {
-		setName(name);
+		this.name = name;
 		this.inbox = new ArrayList<>();
 		this.outbox = new ArrayList<>();
 	}
@@ -28,7 +28,7 @@ public class Email {
 		if (matcher.matches()) {
 			this.name = name;
 		} else {
-			throw new IllegalArgumentException("Name: " + name);
+			throw new IllegalArgumentException("Illegal email name: " + name);
 		}
 	}
 

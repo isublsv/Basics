@@ -6,6 +6,7 @@ import by.etc.code_review.module6.task01.entity.book.Type;
 import by.etc.code_review.module6.task01.entity.user.User;
 import by.etc.code_review.module6.task01.utils.Catalog;
 import by.etc.code_review.module6.task01.utils.Pagination;
+import by.etc.code_review.module6.task01.utils.UserUtils;
 
 /**
  * 1. Создать консольное приложение "Учет книг в домашней библиотеке".
@@ -56,6 +57,7 @@ public class Task {
 		searchBook2.nextPage();
 
 		System.out.println("=================================");
+
 		Book book2 = new BookBuilder().withTitle("C++")
 		                            .withAuthors(new String[]{"NotBloch"})
 		                            .setPublisher("North Star")
@@ -64,9 +66,14 @@ public class Task {
 		                            .setType(Type.PAPER)
 		                            .build();
 
-		catalog.sendBookToCaatalog("Add this book, please!", "It's a very helpful book", book2);
+		catalog.sendBookToCatalog("Add this book, please!", "It's a very helpful book", book2);
 
 		catalog.getUser().getEmail().printInbox();
 		catalog.getUser().getEmail().printOutbox();
+
+		UserUtils.addUser("reader", "reader");
+
+		UserUtils.removeUser("reader", "reader");
+
 	}
 }
