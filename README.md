@@ -1,8 +1,8 @@
 # Module 1. Basics of software code development
 Package description:
-- The **line_programs** package contains solutions of the tasks for arithmetic operators.
-- The **branching** package contains solutions of the tasks for if-than-else construction.
-- The **cycles** package contains solutions of the tasks for loop operators.
+- The **line_programs** package contains solutions of the tasks with arithmetic operators.
+- The **branching** package contains solutions of the tasks with if-than-else constructions.
+- The **cycles** package contains solutions of the tasks with loop operators.
 
 # Module 2. Algorithmization
 Package description:
