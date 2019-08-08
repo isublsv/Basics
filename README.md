@@ -1,13 +1,13 @@
 # Module 1. Basics of software code development
 Package description:
-- The **line_programs** package contains solutions of the tasks with arithmetic operators.
+- The **line_program** package contains solutions of the tasks with arithmetic operators.
 - The **branching** package contains solutions of the tasks with if-than-else constructions.
-- The **cycles** package contains solutions of the tasks with loop operators.
+- The **cycle** package contains solutions of the tasks with loop operators.
 
 # Module 2. Algorithmization
 Package description:
-- The **single_arrays** package contains solutions of the tasks with one-dimensional arrays.
-- The **multi_arrays** package contains solutions of the tasks with multidimensional arrays.
+- The **single_array** package contains solutions of the tasks with one-dimensional arrays.
+- The **multi_array** package contains solutions of the tasks with multidimensional arrays.
 - The **array_sort** package contains solutions of the tasks with different kinds of array sorting.
 - The **decomposition** package contains solutions of the tasks about decomposition.
 
@@ -30,4 +30,4 @@ Package description:
 Package description:
 - The **module6** package contains solutions of the big tasks.
 
-Each class has task description.
+**Each class has task description.**
