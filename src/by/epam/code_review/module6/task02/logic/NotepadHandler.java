@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * The class is a singleton.
+ */
 public class NotepadHandler {
 
 	private static NotepadHandler instance;
@@ -102,7 +105,8 @@ public class NotepadHandler {
 		return notesAfterDate;
 	}
 
-	/** Finds if the note message contains the provided word.
+	/**
+	 * Finds if the note message contains the provided word.
 	 *
 	 * @return the list of the notes
 	 */
@@ -191,7 +195,7 @@ public class NotepadHandler {
 	}
 
 	/**
-	 *  Get word value from the console using {@link NotepadHandler#scanner} and checks if it satisfy provided
+	 * Get word value from the console using {@link NotepadHandler#scanner} and checks if it satisfy provided
 	 * {@value WORD_REGEX}.
 	 *
 	 * @return the word value.
