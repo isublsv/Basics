@@ -25,8 +25,9 @@ public interface ArchiveService extends Remote {
 	Person getPersonByLastname(String lastname) throws RemoteException;
 
 	/**
-	 * Update information about person in the archive.
+	 * Update information about the person in the archive by id.
 	 *
+	 * @param id the id of the person in the archive.
 	 * @param person the provided entity.
 	 * @throws RemoteException may occur during the execution of a remote method call.
 	 */
